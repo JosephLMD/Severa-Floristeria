@@ -45,25 +45,25 @@ img{max-width:100%;display:block}
  --bg:#ffffff;--bg2:#faf9f7;--card:#ffffff;--ink:#141414;--soft:#5c5c58;
  --line:#ecebe7;--chipbg:#f4f3ef;--chiptx:#8a8a84;--btn:#141414;--btntx:#ffffff;
  --navbg:rgba(255,255,255,.94);--shadow:0 16px 44px rgba(20,20,20,.1);
- --headfont:'Playfair Display',serif;--headweight:600;--headspace:0px;--heroph:0;--herobg:linear-gradient(135deg,#fdeef5 0%,#faf9f7 48%,#f3f7e4 100%);
+ --headfont:'Playfair Display',serif;--headweight:600;--headspace:0px;--heroph:0;--herobg:linear-gradient(135deg,#fdeef5 0%,#faf9f7 48%,#f3f7e4 100%);--lgl:block;--lgo:none;
 }
 @media(prefers-color-scheme:dark){:root{
  --bg:#0b0b0b;--bg2:#141414;--card:#161616;--ink:#f4f4f0;--soft:#a9a9a2;
  --line:rgba(255,255,255,.11);--chipbg:#1f1f1f;--chiptx:#9c9c95;--btn:#FF0F7B;--btntx:#ffffff;
  --navbg:rgba(11,11,11,.92);--shadow:0 16px 44px rgba(255,15,123,.13);
- --headfont:'Poppins',sans-serif;--headweight:800;--headspace:-.5px;--heroph:.30;--herobg:var(--bg2);
+ --headfont:'Poppins',sans-serif;--headweight:800;--headspace:-.5px;--heroph:.30;--herobg:var(--bg2);--lgl:none;--lgo:block;
 }}
 html[data-theme="light"]{
  --bg:#ffffff;--bg2:#faf9f7;--card:#ffffff;--ink:#141414;--soft:#5c5c58;
  --line:#ecebe7;--chipbg:#f4f3ef;--chiptx:#8a8a84;--btn:#141414;--btntx:#ffffff;
  --navbg:rgba(255,255,255,.94);--shadow:0 16px 44px rgba(20,20,20,.1);
- --headfont:'Playfair Display',serif;--headweight:600;--headspace:0px;--heroph:0;--herobg:linear-gradient(135deg,#fdeef5 0%,#faf9f7 48%,#f3f7e4 100%);
+ --headfont:'Playfair Display',serif;--headweight:600;--headspace:0px;--heroph:0;--herobg:linear-gradient(135deg,#fdeef5 0%,#faf9f7 48%,#f3f7e4 100%);--lgl:block;--lgo:none;
 }
 html[data-theme="dark"]{
  --bg:#0b0b0b;--bg2:#141414;--card:#161616;--ink:#f4f4f0;--soft:#a9a9a2;
  --line:rgba(255,255,255,.11);--chipbg:#1f1f1f;--chiptx:#9c9c95;--btn:#FF0F7B;--btntx:#ffffff;
  --navbg:rgba(11,11,11,.92);--shadow:0 16px 44px rgba(255,15,123,.13);
- --headfont:'Poppins',sans-serif;--headweight:800;--headspace:-.5px;--heroph:.30;--herobg:var(--bg2);
+ --headfont:'Poppins',sans-serif;--headweight:800;--headspace:-.5px;--heroph:.30;--herobg:var(--bg2);--lgl:none;--lgo:block;
 }
 html,body{overflow-x:hidden}
 body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
@@ -72,9 +72,13 @@ html[data-theme="light"] .shead h2,html:not([data-theme]) .shead h2{font-style:n
 .pinfo h3,.oca h3{font-family:var(--headfont);font-weight:var(--headweight)}
 .brush{font-family:'Permanent Marker',cursive;font-weight:400;font-style:normal;color:var(--pk);letter-spacing:0}
 .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
-nav{position:sticky;top:0;z-index:100;background:var(--navbg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navbg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+body{padding-top:64px}
 .nrow{display:grid;grid-template-columns:46px 1fr auto;align-items:center;height:64px;gap:10px}
-.logo{justify-self:center;text-align:center}
+.logo{justify-self:center;text-align:center;display:flex;align-items:center}
+.lg{height:50px;width:auto;display:block}
+.lg-claro{display:var(--lgl)}
+.lg-oscuro{display:var(--lgo)}
 .nacts{display:flex;gap:8px;align-items:center}
 .burger{background:none;border:none;cursor:pointer;padding:10px 8px;display:flex;flex-direction:column;gap:5px}
 .burger span{width:22px;height:2.5px;background:var(--ink);border-radius:2px;transition:.2s}
@@ -139,10 +143,11 @@ section.alt{background:var(--bg2)}
 .pinfo{padding:12px 13px 13px;display:flex;flex-direction:column;flex:1}
 .pinfo h3{font-size:15.5px;margin-bottom:3px}
 .pinfo p{font-size:11.8px;color:var(--soft);line-height:1.45;flex:1}
-.prow{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}
+.prow{display:flex;flex-direction:column;align-items:stretch;margin-top:10px;gap:7px}
 .pp{font-size:13px;font-weight:800;color:var(--ink)}
 .pp.soft{font-size:10.5px;font-weight:700;color:var(--lm);letter-spacing:.4px;text-transform:uppercase}
-.pcta{font-size:11.5px;font-weight:700;text-decoration:none;color:var(--btntx);background:var(--btn);padding:8px 15px;border-radius:100px;transition:.2s;white-space:nowrap}
+.pcta{font-size:11.5px;font-weight:700;text-decoration:none;color:var(--btntx);background:var(--btn);padding:9px 15px;border-radius:100px;transition:.2s;white-space:nowrap;text-align:center}
+.pp{text-align:center}
 .pcta:hover{background:var(--pk);color:#fff}
 .code{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:1px;color:#fff;background:rgba(10,10,10,.55);backdrop-filter:blur(4px);border-radius:100px;padding:3px 10px}
 .tier{margin:34px 0 16px;display:flex;flex-direction:column;gap:2px}
@@ -178,6 +183,16 @@ section.alt{background:var(--bg2)}
 .faq summary::after{content:'+';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--pk)}
 .faq[open] summary::after{content:'−'}
 .faq p{padding:0 20px 15px;font-size:13.5px;color:var(--soft)}
+.catgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.catcard{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.25s}
+.catcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.cimg{aspect-ratio:16/10;overflow:hidden}
+.cimg img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.catcard:hover .cimg img{transform:scale(1.05)}
+.cinfo{padding:14px 16px 16px}
+.cinfo h3{font-size:17px;margin-bottom:4px}
+.cinfo p{font-size:12.5px;color:var(--soft);margin-bottom:10px}
+.cinfo .go{font-size:11.5px;font-weight:700;color:var(--pk)}
 .seotext{border-top:1px solid var(--line);margin-top:36px;padding-top:26px;max-width:820px}
 .seotext h2{font-size:19px;margin-bottom:10px;font-family:'Poppins',sans-serif;font-weight:700}
 .seotext p{font-size:13.8px;color:var(--soft);margin-bottom:12px}
@@ -199,13 +214,13 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
 .sober-hero h1{font-size:clamp(28px,4.2vw,48px)}
 .crumbs{font-size:12px;color:var(--chiptx);margin-bottom:12px}
 .crumbs a{color:var(--chiptx)}
-@media(max-width:1000px){.pgrid{grid-template-columns:repeat(3,1fr)}.wgrid,.stgrid{grid-template-columns:1fr 1fr}.ogrid{grid-template-columns:1fr 1fr}}
+@media(max-width:1000px){.pgrid{grid-template-columns:repeat(3,1fr)}.catgrid{grid-template-columns:1fr 1fr}.wgrid,.stgrid{grid-template-columns:1fr 1fr}.ogrid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){
  .wrap{padding:0 20px}
- .hgrid{grid-template-columns:1fr;padding:28px 0 26px;gap:18px}
- .himg{transform:none;max-width:76%;justify-self:center;margin:0 auto}
- .d1{width:36px;top:3%;right:4%}
- .d2{display:none}
+ .hgrid{grid-template-columns:1fr;padding:26px 2px 26px;gap:18px}
+ .himg{transform:none;max-width:74%;justify-self:center;margin:0 auto}
+ .doodle{display:none}
+ .hero h1{overflow-wrap:break-word}
  .pgrid{grid-template-columns:1fr 1fr;gap:12px}
  .pinfo{padding:10px 10px 11px}
  .pinfo h3{font-size:13.5px}
@@ -213,6 +228,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
  .pcta{padding:7px 12px;font-size:10.5px}
  .pp.soft{font-size:9px}
  .wgrid,.stgrid,.ogrid{grid-template-columns:1fr 1fr;gap:10px}
+ .catgrid{grid-template-columns:1fr}
  .opgrid{grid-template-columns:1fr}
  .why p,.st p{font-size:12px}
  .oca{padding:15px}
@@ -231,7 +247,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
 <body>
 <nav><div class="wrap nrow">
   <button class="burger" onclick="__sfDrawer(1)" aria-label="Abrir menú"><span></span><span></span><span></span></button>
-  <a class="logo" href="index.html"><span class="l1">SEVERA <b>FLOR</b></span><span class="l2">FLORISTERÍA · BOGOTÁ</span></a>
+  <a class="logo" href="index.html" aria-label="Severa Flor Floristería, inicio"><img class="lg lg-claro" src="severa-flor-logo-claro.png" alt="Severa Flor Floristería Bogotá"><img class="lg lg-oscuro" src="severa-flor-logo-oscuro.png" alt="" aria-hidden="true"></a>
   <div class="nacts">
     <button class="tgl" onclick="__sfCycle()" aria-label="Cambiar tema claro u oscuro" title="Tema: automático, oscuro o claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg></button>
     <a class="ncta" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20pedir%20un%20arreglo" target="_blank" rel="noopener">WhatsApp</a>
@@ -241,6 +257,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
 <aside class="drawer" id="drawer" aria-label="Menú">
   <div class="dhead"><span class="l1">SEVERA <b>FLOR</b></span><button class="dclose" onclick="__sfDrawer(0)" aria-label="Cerrar menú">×</button></div>
   <p class="dsec">Catálogo</p>
+  <a href="catalogo.html">Catálogo completo</a>
   <a href="ramos-y-buquets-bogota.html">Ramos y buquets</a>
   <a href="cajas-florales-bogota.html">Cajas florales</a>
   <a href="arreglos-florales-bogota.html">Arreglos florales</a>
@@ -265,7 +282,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
 <section><div class="wrap">
   <div class="tier"><h2 class="tier-t">ECONÓMICO</h2><p class="tier-d">Detalles que dicen mucho sin gastar de más</p></div><div class="pgrid"><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Mini%20Severa%20%28BQT-12%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-12.jpg" alt="Mini Severa: Detalle pequeño con la actitud completa. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-12.jpg" alt="Mini Severa: Detalle pequeño con la actitud completa. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Mini Severa</h3><p>Detalle pequeño con la actitud completa</p>
@@ -274,7 +291,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Rosadita%20%28BQT-06%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-06.jpg" alt="Rosadita: Gerberas y rosas en tonos rosa, envoltura pastel. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-06.jpg" alt="Rosadita: Gerberas y rosas en tonos rosa, envoltura pastel. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Rosadita</h3><p>Gerberas y rosas en tonos rosa, envoltura pastel</p>
@@ -283,7 +300,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Dulce%20Detalle%20%28BQT-08%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-08.jpg" alt="Dulce Detalle: Arreglo compacto en tonos suaves. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-08.jpg" alt="Dulce Detalle: Arreglo compacto en tonos suaves. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Dulce Detalle</h3><p>Arreglo compacto en tonos suaves</p>
@@ -292,7 +309,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Severa%20Tarde%20%28BQT-13%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-13.jpg" alt="Severa Tarde: Mix vibrante de rosas y flores de temporada. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-13.jpg" alt="Severa Tarde: Mix vibrante de rosas y flores de temporada. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Severa Tarde</h3><p>Mix vibrante de rosas y flores de temporada</p>
@@ -301,7 +318,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article></div><div class="tier"><h2 class="tier-t">MÁS VENDIDOS <span class="star">FAVORITOS</span></h2><p class="tier-d">Los favoritos de nuestros clientes</p></div><div class="pgrid"><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Amor%20Directo%20%28BQT-07%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-07.jpg" alt="Amor Directo: Rosas rojas en kraft, estilo simple y contundente. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-07.jpg" alt="Amor Directo: Rosas rojas en kraft, estilo simple y contundente. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Amor Directo</h3><p>Rosas rojas en kraft, estilo simple y contundente</p>
@@ -310,7 +327,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Rojo%20Cl%C3%A1sico%20%28BQT-14%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-14.jpg" alt="Rojo Clásico: Rosas rojas y margaritas, envoltura blanca. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-14.jpg" alt="Rojo Clásico: Rosas rojas y margaritas, envoltura blanca. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Rojo Clásico</h3><p>Rosas rojas y margaritas, envoltura blanca</p>
@@ -319,7 +336,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Severo%20Kraft%20%28BQT-15%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-15.jpg" alt="Severo Kraft: Rosas rojas y gypsophila en papel kraft. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-15.jpg" alt="Severo Kraft: Rosas rojas y gypsophila en papel kraft. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Severo Kraft</h3><p>Rosas rojas y gypsophila en papel kraft</p>
@@ -328,7 +345,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Severa%20Fiesta%20%28BQT-04%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-04.jpg" alt="Severa Fiesta: Mix multicolor de temporada, envoltura blanca. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-04.jpg" alt="Severa Fiesta: Mix multicolor de temporada, envoltura blanca. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Severa Fiesta</h3><p>Mix multicolor de temporada, envoltura blanca</p>
@@ -337,7 +354,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article></div><div class="tier"><h2 class="tier-t">PREMIUM</h2><p class="tier-d">Diseños con más flor, más impacto</p></div><div class="pgrid"><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Severa%20Nube%20%28BQT-01%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-01.jpg" alt="Severa Nube: Buquet mixto en tonos pastel, envoltura lila premium. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-01.jpg" alt="Severa Nube: Buquet mixto en tonos pastel, envoltura lila premium. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Severa Nube</h3><p>Buquet mixto en tonos pastel, envoltura lila premium</p>
@@ -346,7 +363,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Severo%20Rojo%20%28BQT-02%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-02.jpg" alt="Severo Rojo: Rosas rojas y lirio naranja, envoltura fucsia. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-02.jpg" alt="Severo Rojo: Rosas rojas y lirio naranja, envoltura fucsia. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Severo Rojo</h3><p>Rosas rojas y lirio naranja, envoltura fucsia</p>
@@ -355,7 +372,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Para%20Ella%20%28BQT-10%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-10.jpg" alt="Para Ella: Buquet romántico en rosa y rojo. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-10.jpg" alt="Para Ella: Buquet romántico en rosa y rojo. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Para Ella</h3><p>Buquet romántico en rosa y rojo</p>
@@ -364,7 +381,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Severo%20Sol%20%28BQT-11%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-11.jpg" alt="Severo Sol: Rosas rojas y girasol, envoltura oscura con actitud. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-11.jpg" alt="Severo Sol: Rosas rojas y girasol, envoltura oscura con actitud. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Severo Sol</h3><p>Rosas rojas y girasol, envoltura oscura con actitud</p>
@@ -373,7 +390,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article></div><div class="tier"><h2 class="tier-t">LUJO</h2><p class="tier-d">Para ocasiones que merecen todo</p></div><div class="pgrid"><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20La%20Elegida%20%28BQT-05%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-05.jpg" alt="La Elegida: Rosas selectas en caja larga con lazo. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-05.jpg" alt="La Elegida: Rosas selectas en caja larga con lazo. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>La Elegida</h3><p>Rosas selectas en caja larga con lazo</p>
@@ -382,7 +399,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Severa%20Esfera%20%28BQT-09%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-09.jpg" alt="Severa Esfera: Esfera de rosas rosadas con gypsophila. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-09.jpg" alt="Severa Esfera: Esfera de rosas rosadas con gypsophila. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Severa Esfera</h3><p>Esfera de rosas rosadas con gypsophila</p>
@@ -391,7 +408,7 @@ footer{background:#0a0a0a;color:#a9a9a2;padding:48px 0 30px;text-align:center}
       </div>
     </article><article class="pc">
       <a class="pimg" href="https://wa.me/573202005973?text=Hola%20Severa%20Flor%2C%20quiero%20el%20dise%C3%B1o%20Severa%20Lila%20%28BQT-03%29" target="_blank" rel="noopener">
-        <img src="fotos/buquet/severa-flor-buquet-03.jpg" alt="Severa Lila: Lirios y flores rosadas, envoltura morada de lujo. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
+        <img src="severa-flor-buquet-03.jpg" alt="Severa Lila: Lirios y flores rosadas, envoltura morada de lujo. Ramos y Buquets Severa Flor Bogotá" loading="lazy">
       </a>
       <div class="pinfo">
         <h3>Severa Lila</h3><p>Lirios y flores rosadas, envoltura morada de lujo</p>
